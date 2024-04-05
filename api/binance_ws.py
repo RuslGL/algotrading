@@ -35,16 +35,17 @@ class Socket_conn_Binance(websocket.WebSocketApp):
 url = 'wss://fstream.binance.com/ws/!ticker@arr'
 
 
-list_streams = [
-    'adausdt@trade',
-    'adausdt@kline_1m',
-    'adausdt@depth20@500ms',
-]
+if __name__ == '__main__':
+    list_streams = [
+        'adausdt@trade',
+        'adausdt@kline_1m',
+        'adausdt@depth20@500ms',
+    ]
 
-url_multy = (
-    f'wss://stream.binance.com:443/stream?streams='
-    f'{"%2F".join(str(e) for e in list_streams)}'
-)
+    url_multy = (
+        f'wss://stream.binance.com:443/stream?streams='
+        f'{"%2F".join(str(e) for e in list_streams)}'
+    )
 
-threading.Thread(target=Socket_conn_Binance, args=(url,)).start()
-threading.Thread(target=Socket_conn_Binance, args=(url_multy,)).start()
+    threading.Thread(target=Socket_conn_Binance, args=(url,)).start()
+    threading.Thread(target=Socket_conn_Binance, args=(url_multy,)).start()
