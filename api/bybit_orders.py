@@ -6,7 +6,6 @@ import os
 import time
 
 import aiohttp
-import requests
 
 from dotenv import load_dotenv
 
